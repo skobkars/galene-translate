@@ -1,0 +1,35 @@
+# Help Tools
+
+These very simple C programs can run on Linus and MacOS systems. Compiling them is as simple as calling
+```make extract```, ```make merge``` and ```buildTemplate```.
+
+While developing the translation scripts, I worked with my German translation. I have tried to get all possible textes provided by Galènem there are a lot of textes and it is not possible to extract all of them manually.
+
+In order to provide a template file and possibly have a multi translation via a translation system like DeepL, it will be nice to be able to have independent text files.
+
+## Example:
+
+```
+tools/extract translation-de.js en.txt
+``
+
+This will provide the English text to be translated. For example, create a file pt.txt containing the Portuguese texts.
+
+You can output the following after the work is done:
+
+```
+tools/merge template.txt pt.txt translation-pt.js
+```
+
+This creates translation-pt.js.
+
+If you have translated the textes with a AI-system, revise the textes which may contain escaped characters as '"', '(' or ')'.
+
+The translated textes shall contain '"', they must be escaped if there are no special charaters and  
+
+## The buildTemplate command allows me to rebuild the template file from my translated text:
+
+```
+tools/buildTemplate translation-de.js template.txt
+``
+
