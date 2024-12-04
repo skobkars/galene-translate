@@ -12,9 +12,11 @@ The translated textes are located within a file translation-XX.js which will be 
 
 An other file must also be provided galene-XX.css. This file is used in order to correct the size of the Media-activation element.
 
-#ä installation
+## installation
 
 Copy the folder translation under the static directory for your galene project.
+
+Insert the line ```<script src="/translation/translate.js" defer></script>``` within the head section of the files 404.html, change-password.html, galene.html and index.html.
 
 ## translating
 
