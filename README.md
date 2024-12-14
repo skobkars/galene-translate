@@ -18,10 +18,6 @@ Copy the folder translation under the static directory for your galene project.
 
 Insert the line ```<script src="/translation/translate.js" defer></script>``` within the head section of the files 404.html, change-password.html, galene.html and index.html.
 
-## translating
-
-See also the file translation/tools/README
-
 After your language is provided you must insert:
 
 ```<script src="/translation/translate.js" defer></script>```
@@ -33,7 +29,11 @@ copy all files to this folder.
 
 ## Translating
 
+See also the file translation/tools/README
+
 The file template.txt contain all textes I have extracted from the html files provided by galene and probably most of the textes put to the script galene.js to the html files. Some textes may be not present, an can be inserted within the translation file.
+
+
 
 Most of the textes are fix and there are put to the translateList objects list.
 
@@ -74,16 +74,4 @@ for the last translation the english text contain '(' and ')', there are escaped
 
 The file translate.js look for the language configured within the browser and try to load the file translation/galene-XX.css and then the file translation/translation-XX.js. If the javascript file is present a function within translate.js will be called by the translation-XX.js script and the translation will be performed.
 
-Static textes will be retriewed from the with the code:
-
-```
-let translation = langArray['english text']); 
-```
-
-For the composed textes we split the input text according to the english description eg.
-
-```
-let splited = 'You have been muted by |1|'.split('|')
-
-```
-
+The translate.js file will also try to include a CSS file *galene-XX.css*. This file allows you to set the width of the ' Enable' and ' Disable' button to the terms utilized in your language.

@@ -93,11 +93,16 @@ const translate = {
         let textNodes = [], whitespace = /^\s*$/;
         function getTextNodes(node) {
             if (node.nodeType == 3) {
-                let found = false
+                let found = false;
                 if (includeWhitespaceNodes || !whitespace.test(node.nodeValue)) {
-                        if ( translateList[node.textContent] ) {
-                            node.textContent = translateList[node.textContent];
-                            found = true
+                    if ( node.textContent === '✖') {
+                        // ignore toastify button!
+                        found = true;
+                        return;
+                    }
+                    if ( !found && translateList[node.textContent] ) {
+                        node.textContent = translateList[node.textContent];
+                        found = true;
                     }
                     if (!found) {
                         let text = translate.searchReg(node.textContent);
@@ -124,7 +129,16 @@ const translate = {
             let translated = translateList[title];
             if ( translated && translated != '') {
                 titles[i].setAttribute('title', translated);
-                titles[i].setAttribute('aria-label', translated);
+            }
+        }
+    },
+    replaceAriaLabel : function() {
+        let labels = document.querySelectorAll('*[aria-label]');
+        for (let i = 0; i < labels.length; i++) {
+            let label = labels[i].getAttribute('aria-label');
+            let translated = translateList[label];
+            if ( translated && translated != '') {
+                labels[i].setAttribute('aria-label', translated);
             }
         }
     },
@@ -173,6 +187,15 @@ const translate = {
             message.classList.add('hidden');
         setTimeout(replaceTextContentTimed, 100);
     },
+    setPlaceHolder : function() {
+        let textArea = document.querySelector('#input');
+        if ( textArea && textArea.placeholder !== '') {
+            let text =textArea.placeholder;
+            let newText = translateList[text];
+            if ( newText && newText !== text )
+                textArea.placeholder = newText;
+        }
+    },
     replaceText : function() {
         let lang = navigator.language.slice(0,2);
         document.querySelector('html').setAttribute('lang',lang);
@@ -180,6 +203,8 @@ const translate = {
         translate.replaceTextIn(body);
         translate.replaceValue();
         translate.replaceTitle();
+        translate.replaceAriaLabel();
+        translate.setPlaceHolder();
         const observerOptions = {
             childList: true,
             subtree: false,
@@ -189,7 +214,12 @@ const translate = {
         let chatBox = document.querySelector('#box');
         if ( chatBox ) {
             const chatObserver = new MutationObserver(translate.chatSystemMessage);
-            chatObserver.observe(chatBox, {childList:true, subtree:true, characterData:true });
+            chatObserver.observe(chatBox, {childList:true, subtree:false, characterData:true });
+        }
+        let input = document.querySelector('#input');
+        if ( input ) {
+           const inputObserver = new MutationObserver(translate.setPlaceHolder);
+           inputObserver.observe(input, {attributes: true});
         }
         let sel = document.getElementById('filterselect');
         if ( sel ) {
@@ -207,7 +237,7 @@ const translate = {
        let tbl = document.querySelector('#public-groups-table');
        if ( tbl ) {
            setTimeout(translate.replaceTextIn,2000, tbl);
-       }   
+       }
     },
     loadLanguage : function() {
         let lang = navigator.language.slice(0,2);

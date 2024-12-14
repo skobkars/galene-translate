@@ -1,7 +1,14 @@
 # Help Tools
 
-These very simple C programs can run on Linus and MacOS systems. Compiling them is as simple as calling
-```make extract```, ```make merge``` and ```buildTemplate```.
+These very simple go programs can run on Linus and MacOS systems. Compiling them is as simple as calling:
+
+```CGO_ENABLED=0 go build -ldflags='-s -w' extract.go```,
+
+```CGO_ENABLED=0 go build -ldflags='-s -w' merge.go```,
+
+```CGO_ENABLED=0 go build -ldflags='-s -w' sync.o``` and
+
+```CGO_ENABLED=0 go build -ldflags='-s -w' buildTemplate.go```.
 
 While developing the translation scripts, I worked with my German translation. I have tried to get all possible textes provided by Galènem there are a lot of textes and it is not possible to extract all of them manually.
 
@@ -23,9 +30,14 @@ tools/merge template.txt pt.txt translation-pt.js
 
 This creates translation-pt.js.
 
-If you have translated the textes with a AI-system, revise the textes which may contain escaped characters as '"', '(' or ')'.
+**Note that the order of the translated textes shall be respected and that the translation of all textes is included.**
 
-The translated textes shall contain '"', they must be escaped if there are no special charaters and  
+
+
+If you have translated the textes with a AI-system, revise the textes. Some of them may be wrong,
+
+The translated textes shall contain '"', they must be escaped if there are no special charaters.
+merge will try to correct this. Thr same apply to textes which contain missplaced  '\'.
 
 ## The buildTemplate command allows me to rebuild the template file from my translated text:
 
@@ -33,3 +45,12 @@ The translated textes shall contain '"', they must be escaped if there are no sp
 tools/buildTemplate translation-de.js template.txt
 ``
 
+## Text entries added to the reference file (for me translation-de.js)
+
+In order to insert the new text in allready translated file  or into the template file we can issue
+
+```
+tools/sync translation-de.js translation-fr.js tmpfile.txt
+```
+
+After this you can check if the file tmpfile.txt is okay and if so add the translation for entries with empty translation and finally copy the file tmpfile to the translated file (here translation-de.js).

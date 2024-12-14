@@ -1,5 +1,6 @@
 const translateList = {
 "Galène":                                                                                                              "",
+"Type /help for help":                                                                                                  "",
 " Enable":                                                                                                              "",
 " Disable":                                                                                                             "",
 "Mute":                                                                                                                 "",
@@ -144,9 +145,16 @@ const translateList = {
 "(Choosing \"Accept\" will disclose your IP address.)":                                                                 "",
 "Token operation failed: file does not exist":                                                                          "",
 "Cancelled: Duplicate file transfer id; perhaps you have tried to send a file to yourself?.":                           "",
+"The Server said: not authorised":                                                                                      "",
+"Volume slider":                                                                                                        "",
+"User list":                                                                                                            "",
+"Chat box":                                                                                                             "",
+"Video area":                                                                                                           "",
+"Muted":                                                                                                                "",
+"On":                                                                                                                   "",
 " by ":                                                                                                                 "",
 "Juliusz Chroboczek":                                                                                                   "",
-"✖":                                                                                                                  "",
+"✖":                                                                                                                    "",
 };
 
 const translatePositional = [
