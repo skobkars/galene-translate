@@ -27,6 +27,7 @@ const translateList = {
 "none":                    "ohne",
 "Horizontal mirror":       "Horizontal Spiegeln",
 "Vertical mirror":         "Vertikal Spiegeln",
+"Background blur":         "Hintergrundunschärfe",
 "Send:":                   "Senden:",
 "lowest":                  "niedrigste",
 "low":                     "niedrig",

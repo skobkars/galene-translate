@@ -10,11 +10,6 @@
  .collapse-video { right: calc(100vw - 48px); }
 }
 
-#filterselect,
-#sendselect,
-#simulcastselect,
-#requestselect { width: 11em; }
-
 #errormessage.hidden, #message.hidden {
     width: 0;
     overflow:hidden;
