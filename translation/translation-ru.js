@@ -80,7 +80,7 @@ const translateList = {
 "NotAllowedError: Permission denied":                                                                                   "Ошибка авторизации: Доступ запрещен",
 "The server said: not authorised":                                                                                      "Сервер сообщает: нет авторизации",
 "This browser doesn't support file playback":                                                                           "Этор браузер не поддерживает проигрывание файлов",
-"Press Enable to enable your camera or microphone":                                                                     "Нажмите Разрешить для включения камеры или микрофона",
+"Press Enable to enable your camera or microphone":                                                                     "Нажмите Включить для включения камеры или микрофона",
 "TypeError: audio and/or video is required":                                                                            "Ошибка: Аудио и/или видео необходимы",
 "The server said: there are no operators in this group":                                                                "Сервер сообщает: В группе отсутствует оператор",
 "NotAllowedError: The request is not allowed by the user agent or the platform in the current context.":                "Ошибка: Запрос не разрешен агентом браузера или платформой в данном контексте.",
